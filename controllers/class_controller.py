@@ -16,3 +16,20 @@ def all_classes():
 def show_class(id):
     class_to_show = class_repository.select(id)
     return render_template("/classes/index.html", gym_class = class_to_show)
+
+#Add new class
+@classes_blueprint.route("/add_class")
+def add_class():
+    return render_template("/classes/new.html")
+
+#Update the class list
+@classes_blueprint.route("/", methods = ['POST'])
+def new_class():
+    class_name = request.form['name']
+    class_date = request.form['date']
+    price = request.form['price']
+    capacity = request.form['capacity']
+    premium = request.form['premium']
+    new_class = GymClass(class_name, class_date, price, capacity, premium)
+    class_repository.save(new_class)
+    return redirect("/")

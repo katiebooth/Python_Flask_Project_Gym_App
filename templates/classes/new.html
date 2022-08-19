@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center">
+    <h1>Add a new class</h1>
+    <form action="/" method="post">
+      <div class="inputbox">
+        <input type="text" name="name" id="name_input" required="required">
+        <span>Class Name</span>
+      </div>
+      <div class="calendar">
+      <label for="date">Date</label>
+      <input type="date" name="date" id="date">
+      </div>
+      <div class="inputbox">
+        <input type="text" name="price" id="price_input" required="required">
+        <span>Price</span>
+      </div>
+      <div class="inputbox">
+        <input type="text" name="capacity" id="capacity_input"required="required">
+        <span>Capacity</span>
+      </div>
+      <div class="inputbox">
+        <input type="text" name="premium" id="premium_input"required="required">
+        <span>Standard / Premium</span>
+      </div>
+      <div class="inputbox">
+        <input type="submit" value="Add Class">
+      </div>
+    </form>
+  </div>
+{% endblock %}
+
+
