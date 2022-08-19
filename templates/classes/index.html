@@ -1,13 +1,8 @@
-<!-- This is where the classes will be displayed, as well as the summary of member info -->
-
 {% extends "base.html" %}
 {% block content %}
 <h1>Class Information</h1>
-<div class ="classes_container">
-
-{% for gym_class in classes %}
 <div class="classes">
-    
+
     <div class="class_name">
     {{gym_class.name}}
     </div>
@@ -27,10 +22,8 @@
     <div class="premium">
         {{gym_class.premium}}
     </div>
-
-    <p><a href="/{{gym_class.id}}">View / Edit Class</a></p>
 </div>
-{% endfor %}
 
-</div>
+<p><a href="/{{gym_class.id}}/update">Edit Class</a></p>
+
 {% endblock %}

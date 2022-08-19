@@ -24,7 +24,7 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         result = results[0]
-        member = Member(result['name'], row['premium'], row ['active'], result['id']).__dict__
+        member = Member(result['name'], result['premium'], result ['active'], result['id']).__dict__
     return member
 
 def delete_all():

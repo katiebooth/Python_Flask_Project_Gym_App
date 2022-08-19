@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Member Information</h1>
-<div class ="container">
-{% for member in members %}
-<div class="member">
-    <div class="member_name">
-      {{member.name}}
-    </div>
-      <div class="premium">
-        {{member.premium}}
-      </div>  
-        <div class="active">
-            {{member.active}}
+    <div class ="member_container">
+    {% for member in members %}
+    <div class="member">
+        
+        <div class="member_name">
+        {{member.name}}
         </div>
-</div>
-{% endfor %}
+        
+        <div class="premium">
+        {{member.premium}}
+        </div>  
+        
+        <div class="active">
+        {{member.active}}
+        </div>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}
