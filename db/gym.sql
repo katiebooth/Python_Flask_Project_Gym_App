@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS classes;
 CREATE TABLE members (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  membership_type VARCHAR(255),
+  premium BOOLEAN,
   active BOOLEAN
 );
 
@@ -17,7 +17,6 @@ CREATE TABLE classes (
   capacity INT,
   premium BOOLEAN
 );
-
 
 CREATE TABLE bookings(
   id BIGSERIAL PRIMARY KEY,
