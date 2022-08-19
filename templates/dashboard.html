@@ -1,0 +1,19 @@
+<!-- This is where the classes will be displayed, as well as the summary of member info -->
+
+{% extends "base.html" %}
+{% block content %}
+This is where the classes will be displayed, as well as the summary of member info
+{% for gym_class in classes %}
+<div class="classes">
+    <div class="class_name">
+      {{gym_class.name}}
+    </div>
+      <div class="date">
+        {{gym_class.date}}
+      </div>  
+        <div class="active">
+            {{member.active}}
+        </div>
+</div>
+{% endfor %}
+{% endblock %}

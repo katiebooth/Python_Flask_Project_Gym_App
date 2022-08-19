@@ -75,6 +75,12 @@ bookings_repository.save(booking8)
 bookings_repository.save(booking9)
 bookings_repository.save(booking10)
 
+print(member_repository.select_all())
+print(class_repository.select_all())
+print(member_repository.select(member1.id))
+print(class_repository.select(class1.id))
+
+
 
 
 
