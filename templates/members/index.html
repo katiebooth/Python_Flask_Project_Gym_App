@@ -1,24 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Member Information</h1>
-    <div class ="member_container">
-    {% for member in members %}
-    <div class="member">
-        
-        <div class="member_name">
-        {{member.name}}
-        </div>
-        
-        <div class="premium">
-        {{member.premium}}
-        </div>  
-        
-        <div class="active">
-        {{member.active}}
-        </div>
 
-        <p><a href="/members/{{member.id}}/update">Update Member Details</a></p>
-    </div>
-    {% endfor %}
-</div>
+    <table>
+        <th>Member Name</th>
+        <th>Active Member</th>
+        <th>Premium Member?</th>
+        <th>Update Member</th>
+        {% for member in members %}
+        <tr>
+        <td>{{member.name}}</td>
+        <td class="center_headings">        
+            {% if member.active %}
+            <span> &#9989;</span>
+            {% else %}
+            <span>&#10060;</span>
+            {% endif %}
+        </td>
+        <td class="center_headings">
+            {% if member.premium %}
+            <span> &#9989;</span>
+            {% else %}
+            <span>&#10060;</span>
+            {% endif %}
+        </td>
+        <td class="center_headings"><a href="/members/{{member.id}}/update">Update Member Details</a></td>
+        </tr>
+        {% endfor %}  
+    </table>
+
 {% endblock %}

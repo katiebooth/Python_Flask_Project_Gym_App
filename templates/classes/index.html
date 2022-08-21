@@ -1,40 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Class Information</h1>
-<div class="classes">
+<div class="classes_ind">
 
-    <div class="class_name">
+    <b><div class="class_name">
     {{gym_class.name}}
-    </div>
+    </div></b>
     
     <div class="date">
-        {{gym_class.date}}
+        Date : {{gym_class.date}}
     </div>  
     
     <div class="price">
-        {{gym_class.price}}
+        Price : £{{gym_class.price}}
     </div>
     
     <div class="capacity">
-        {{gym_class.capacity}}
+        Capacity : {{gym_class.capacity}}
     </div>
 
-    <div class="premium">
-        {{gym_class.premium}}
+    <div> Premium Class : 
+        {% if gym_class.premium %}
+        <span> &#9989;</span>
+        {% else %}
+        <span>&#10060;</span>
+        {% endif %}
     </div>
-
     <div class="members">
+        <div>Members booked onto class:</div>
         {% for member in members_to_show %}
         <div class="member">
-            
-            <div class="member_name">
-            {{member.name}}
-            </div>
+            <ol>
+            <span> &#9989;</span>   {{member.name}}
+            </ol>
         </div>
         {% endfor %}
     </div>
-</div>
-
 <p><a href="/{{gym_class.id}}/update">Edit Class</a></p>
-
+</div>
 {% endblock %}
