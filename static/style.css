@@ -18,6 +18,7 @@ ul > a {
     border:2px solid cornflowerblue;
     background-color: lightcyan;
     border-radius: 3pt;
+    margin-left: 5px;
 }
 
 ul > a:hover {

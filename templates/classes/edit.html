@@ -1,32 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h2>Update Class Details</h2>
+<div class="input_form_new">
+<h1>Update Class Details</h1>
 
 <form action="/{{ gym_class.id }}" method="POST">
     <div class="inputbox">
-        <input type="text" name="name" id="name_input" >
         <label>Class Name</label>
+        <input type="text" name="name" id="name_input" value = {{gym_class.name}}>
       </div>
       <div class="calendar">
       <label for="date">Date</label>
-      <input type="date" name="date" id="date">
+      <input type="date" name="date" id="date" value = {{gym_class.date}}>
       </div>
       <div class="inputbox">
-        <input type="text" name="price" id="price_input" >
         <label>Price</label>
+        <input type="text" name="price" id="price_input" value= {{gym_class.price}} >
       </div>
       <div class="inputbox">
-        <input type="text" name="capacity" id="capacity_input">
         <label>Capacity</label>
+        <input type="text" name="capacity" id="capacity_input" value = {{gym_class.capacity}}>
       </div>
       <div class="inputbox">
-        <input type="checkbox" name="premium" id="premium_input">
         <label>Premium Membership Required?</label>
+        <input type="checkbox" name="premium" id="premium_input">
       </div>
       <div class="inputbox">
         <input type="submit" value="Update Class">
       </div>
 </form>
-
+</div>
 {% endblock %}
