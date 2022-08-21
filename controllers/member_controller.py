@@ -20,8 +20,24 @@ def add_member():
 @members_blueprint.route("/members", methods = ['POST'])
 def new_member():
     member_name = request.form['name']
-    premium_status = request.form['premium']
-    active_status = request.form["active"]
+    premium_status = True if 'premium' in request.form else False
+    active_status = True if 'active' in request.form else False
     new_member = Member(member_name, premium_status, active_status)
     member_repository.save(new_member)
+    return redirect("/members")
+
+#Edit member
+@members_blueprint.route("/members/<id>/update")
+def edit_member(id):
+    member = member_repository.select(id)
+    return render_template('members/edit.html', member=member)
+
+#Update member
+@members_blueprint.route("/members/<id>", methods=["POST"])
+def update_member(id):
+    name = request.form["name"]
+    premium = True if 'premium' in request.form else False
+    active = True if 'active' in request.form else False
+    member = Member(name, premium, active, id)
+    member_repository.update(member)
     return redirect("/members")

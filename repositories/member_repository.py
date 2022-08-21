@@ -7,6 +7,7 @@ def save(member):
     results = run_sql(sql, values)
     id = results[0]['id']
     member.id = id
+    return member
 
 def select_all():
     members = []
@@ -24,9 +25,29 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         result = results[0]
-        member = Member(result['name'], result['premium'], result ['active'], result['id']).__dict__
+        member = Member(result['name'], result['premium'], result ['active'], result['id'])
     return member
 
 def delete_all():
     sql = "DELETE FROM members"
     run_sql(sql)
+
+#retrieve all members for a given class
+def list_all_members_for_class(id):
+    members_in_class = []
+    sql = """SELECT * FROM members
+            INNER JOIN bookings
+            ON bookings.member_id = members.id
+            WHERE classes_id = %s"""
+    values = [id]
+    results = run_sql(sql, values)
+    for row in results:
+        member = Member(row["name"], row['id']).__dict__
+        members_in_class.append(member)
+    return members_in_class
+
+#UPDATE
+def update(member):
+    sql = "UPDATE members SET (name, premium, active) = (%s, %s, %s)  WHERE id = %s"
+    values = [member.name, member.premium, member.active, member.id]
+    run_sql(sql, values)

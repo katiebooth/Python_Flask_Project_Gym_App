@@ -22,6 +22,17 @@
     <div class="premium">
         {{gym_class.premium}}
     </div>
+
+    <div class="members">
+        {% for member in members_to_show %}
+        <div class="member">
+            
+            <div class="member_name">
+            {{member.name}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 <p><a href="/{{gym_class.id}}/update">Edit Class</a></p>

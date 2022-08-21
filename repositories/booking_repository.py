@@ -9,8 +9,8 @@ def save(booking):
     sql = "INSERT INTO bookings (member_id, classes_id) VALUES (%s, %s) RETURNING id"
     values = [booking.member.id, booking.gym_class.id]
     results = run_sql(sql, values)
-    id = results[0]['id']
-    booking.id = id
+    booking.id = results[0]['id']
+    return booking
 
 def select_all():
     bookings = []
@@ -34,7 +34,7 @@ def select(id):
         member = member_repository.select(result["member_id"])
         gym_class = class_repository.select(result["class_id"])
         booking = Booking(member, gym_class, result["id"])
-    return result
+    return booking
 
 def delete_all():
     sql = "DELETE FROM bookings"

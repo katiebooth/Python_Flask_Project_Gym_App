@@ -7,13 +7,14 @@ def save(gymclass):
     results = run_sql(sql, values)
     id = results[0]['id']
     gymclass.id = id
+    return gymclass
 
 def select_all():
     classes = []
     sql = "SELECT * FROM classes"
     results = run_sql(sql)
     for row in results:
-        gym_class = GymClass(row['name'], row['date'], row['price'], row['capacity'], row['premium'], row['id']).__dict__
+        gym_class = GymClass(row['name'], row['date'], row['price'], row['capacity'], row['premium'], row['id'])
         classes.append(gym_class)
     return classes
 
@@ -24,9 +25,15 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         result = results[0]
-        gym_class = GymClass(result['name'], result['date'], result['price'], result['capacity'], result['premium'], result['id']).__dict__
+        gym_class = GymClass(result['name'], result['date'], result['price'], result['capacity'], result['premium'], result['id'])
     return gym_class
 
 def delete_all():
     sql = "DELETE FROM classes"
     run_sql(sql)
+
+#UPDATE
+def update(gym_class):
+    sql = "UPDATE classes SET (name, date, price, capacity, premium) = (%s, %s, %s, %s, %s)  WHERE id = %s"
+    values = [gym_class.name, gym_class.date, gym_class.price, gym_class.capacity, gym_class.premium, gym_class.id]
+    run_sql(sql, values)

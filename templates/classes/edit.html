@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-
 {% block content %}
-<div class="center">
-    <h1>Add a new class</h1>
-    <form action="/" method="post">
-      <div class="inputbox">
-        <input type="text" name="name" id="name_input" required="required">
+
+<h2>Update Class Details</h2>
+
+<form action="/{{ gym_class.id }}" method="POST">
+    <div class="inputbox">
+        <input type="text" name="name" id="name_input" >
         <label>Class Name</label>
       </div>
       <div class="calendar">
@@ -13,11 +13,11 @@
       <input type="date" name="date" id="date">
       </div>
       <div class="inputbox">
-        <input type="text" name="price" id="price_input" required="required">
+        <input type="text" name="price" id="price_input" >
         <label>Price</label>
       </div>
       <div class="inputbox">
-        <input type="text" name="capacity" id="capacity_input"required="required">
+        <input type="text" name="capacity" id="capacity_input">
         <label>Capacity</label>
       </div>
       <div class="inputbox">
@@ -25,10 +25,8 @@
         <label>Premium Membership Required?</label>
       </div>
       <div class="inputbox">
-        <input type="submit" value="Add Class">
+        <input type="submit" value="Update Class">
       </div>
-    </form>
-  </div>
+</form>
+
 {% endblock %}
-
-
