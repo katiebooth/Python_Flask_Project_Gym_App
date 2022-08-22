@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, redirect, render_template, request
 
 from models.gym_class import GymClass
+from console import *
 import repositories.class_repository as class_repository
 import repositories.member_repository as member_repository
 
@@ -13,7 +14,7 @@ def all_classes():
     no_active_members = len(member_repository.active_members())
     no_inactive_members = len(member_repository.inactive_members())
     total_no_members = len(member_repository.select_all())
-    total_revenue = member_repository.calculate_revenue()
+    total_revenue = member_repository.calculate_total_revenue()
     return render_template("/dashboard.html", classes=classes_to_show, 
                             no_active_members = no_active_members, 
                             no_inactive_members = no_inactive_members, 

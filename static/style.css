@@ -227,10 +227,29 @@ tr:hover {
     float: right;
     margin-right: 450px;
     width: 270px;
+    border: 5px solid cornflowerblue;
     align-items: center;
 }
 
 .members_table th {
     width: 260px;
     font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.financials_summary_container {
+    float: right;
+    margin-right: 450px;
+    margin-top: 20px;
+    width: 270px;
+    border: 5px solid cornflowerblue;
+}
+
+p {
+    text-align: center;
+    color: white;
+}
+
+.revenue {
+    font-size: 40px;
 }

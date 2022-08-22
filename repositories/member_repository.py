@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.member import Member
+import repositories.class_repository as class_repository
 
 def save(member):
     sql = "INSERT INTO members (name, premium, active) VALUES (%s, %s, %s) RETURNING id"
@@ -73,5 +74,9 @@ def inactive_members():
     return inactive_members
 
 #CALCULATE REVENUE
-def calculate_revenue():
-    revenue_by_class = 
+def calculate_total_revenue():
+    all_classes = class_repository.select_all()
+    revenue = 0
+    for gym_class in all_classes:
+        revenue += gym_class.price * len(list_all_members_for_class(gym_class.id))
+    return revenue
