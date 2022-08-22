@@ -12,7 +12,27 @@
     <div class="class_name">
     <b>{{gym_class.name}}</b>
     <span>
-        <img src="yoga.jpg">
+        {% if gym_class.name=="Yoga"%}
+        <img src="static/yoga.jpg"
+        height ="21"
+        width="21">
+    {% elif gym_class.name=="Weightlifting"%}
+        <img src="static/weight.jpg"
+        height ="21"
+        width="21">
+    {% elif gym_class.name=="Run Club"%}
+        <img src="static/running.jpg"
+        height ="21"
+        width="21">
+    {% elif gym_class.name=="Kettlebells"%}
+        <img src="static/kettlebell.jpg"
+        height ="21"
+        width="21">
+    {% elif gym_class.name=="HIIT"%}
+        <img src="static/hiit.jpg"
+        height ="21"
+        width="25">
+    {% endif %}
     </span>
     </div>
     
@@ -41,6 +61,23 @@
 {% endfor %}
 </div>
 
-<p>this is where the summary of member numbers will go </p>
+<div class="members_summary_container">
+    <table>
+        <th>Status</th>
+        <th>No. Members</th>
+        <tr>
+            <td>Active</td>
+            <td>{{no_active_members}}</td>
+        </tr>
+        <tr>
+            <td>Inactive</td>
+            <td>{{no_inactive_members}}</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>{{total_no_members}}</td>
+        </tr>
+    </table>
+</div>
 
 {% endblock %}

@@ -51,3 +51,23 @@ def update(member):
     sql = "UPDATE members SET (name, premium, active) = (%s, %s, %s)  WHERE id = %s"
     values = [member.name, member.premium, member.active, member.id]
     run_sql(sql, values)
+
+#ACTIVE MEMBERS
+def active_members():
+    active_members = []
+    sql = "SELECT * FROM members WHERE active = TRUE"
+    results = run_sql(sql)
+    for row in results:
+        active_member = Member(row['name'], row['premium'], row ['active'], row['id']).__dict__
+        active_members.append(active_member)
+    return active_members
+
+#INACTIVE MEMBERS
+def inactive_members():
+    inactive_members = []
+    sql = "SELECT * FROM members WHERE active = FALSE"
+    results = run_sql(sql)
+    for row in results:
+        inactive_member = Member(row['name'], row['premium'], row ['active'], row['id']).__dict__
+        inactive_members.append(inactive_member)
+    return inactive_members
