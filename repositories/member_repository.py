@@ -71,3 +71,7 @@ def inactive_members():
         inactive_member = Member(row['name'], row['premium'], row ['active'], row['id']).__dict__
         inactive_members.append(inactive_member)
     return inactive_members
+
+#CALCULATE REVENUE
+def calculate_revenue():
+    revenue_by_class = 

@@ -13,7 +13,12 @@ def all_classes():
     no_active_members = len(member_repository.active_members())
     no_inactive_members = len(member_repository.inactive_members())
     total_no_members = len(member_repository.select_all())
-    return render_template("/dashboard.html", classes=classes_to_show, no_active_members = no_active_members, no_inactive_members = no_inactive_members , total_no_members = total_no_members)
+    total_revenue = member_repository.calculate_revenue()
+    return render_template("/dashboard.html", classes=classes_to_show, 
+                            no_active_members = no_active_members, 
+                            no_inactive_members = no_inactive_members, 
+                            total_no_members = total_no_members,
+                            total_revenue=total_revenue)
 
 # DISPLAY INDIVIDUAL CLASS
 @classes_blueprint.route("/<id>")

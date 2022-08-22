@@ -47,9 +47,9 @@ h1 {
 }
 
 h2 {
-    font-size: 16pt;
+    font-size: 26pt;
     color : white;
-    margin-left: 100px;
+    text-align: center;
 }
 
 h3 {
@@ -57,16 +57,21 @@ h3 {
     size: 14pt
 }
 
+.dashboard_container {
+    width: 1400px
+}
+
 .classes_container {
+    float: left;
     display: flex;
     flex-wrap:wrap;
-    width: 700px
+    width: 650px
 }
 
 .classes {
     display: flex; 
     flex-direction: column; 
-    width: 10vw;
+    width: 185px;
     background-color: lightcyan;
     padding: 0px; 
     margin: 10px; 
@@ -205,7 +210,6 @@ tr:hover {
     text-align: left;
 }
 
-
 .classes_ind {
     display: flex; 
     flex-direction: column; 
@@ -217,4 +221,16 @@ tr:hover {
     text-align: center;
     align-items : center; 
     justify-content : center; 
+}
+
+.members_summary_container {
+    float: right;
+    margin-right: 450px;
+    width: 270px;
+    align-items: center;
+}
+
+.members_table th {
+    width: 260px;
+    font-size: 20px;
 }
