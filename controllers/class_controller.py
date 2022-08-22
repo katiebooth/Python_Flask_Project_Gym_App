@@ -14,12 +14,25 @@ def all_classes():
     no_active_members = len(member_repository.active_members())
     no_inactive_members = len(member_repository.inactive_members())
     total_no_members = len(member_repository.select_all())
+    no_standard_members = len(member_repository.standard_members())
+    no_premium_members = len(member_repository.premium_members())
+    no_active_standard_members = len(member_repository.active_standard_members())
+    no_inactive_standard_members = len(member_repository.inactive_standard_members())
+    no_active_premium_members = len(member_repository.active_premium_members())
+    no_inactive_premium_members = len(member_repository.inactive_premium_members())
     total_revenue = member_repository.calculate_total_revenue()
     return render_template("/dashboard.html", classes=classes_to_show, 
                             no_active_members = no_active_members, 
                             no_inactive_members = no_inactive_members, 
                             total_no_members = total_no_members,
-                            total_revenue=total_revenue)
+                            total_revenue=total_revenue,
+                            no_standard_members = no_standard_members,
+                            no_premium_members = no_premium_members,
+                            no_active_standard_members = no_active_standard_members,
+                            no_inactive_standard_members = no_inactive_standard_members,
+                            no_active_premium_members = no_active_premium_members,
+                            no_inactive_premium_members = no_inactive_premium_members
+                            )
 
 # DISPLAY INDIVIDUAL CLASS
 @classes_blueprint.route("/<id>")

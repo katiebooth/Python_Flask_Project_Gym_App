@@ -25,9 +25,12 @@ def make_booking():
     gym_class = class_repository.select(gym_class_id)
     booking = Booking(member, gym_class)
     members_list = member_repository.list_all_members_for_class(gym_class.id)
-    if len(members_list) < gym_class.capacity:
-        booking_repository.save(booking) 
+    if member.premium == False and gym_class.premium == True:
+        return render_template("premium_class.html")
     else:
-        return render_template("class_full.html")   
+        if len(members_list) < gym_class.capacity:
+            booking_repository.save(booking) 
+        else:
+            return render_template("class_full.html")   
     return redirect("/")
 

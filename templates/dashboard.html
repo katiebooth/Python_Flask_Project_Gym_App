@@ -63,21 +63,29 @@
 </div>
 
 <div class="members_summary_container">
-    <h2>Member Info</h2>
+    <h2>Member Numbers</h2>
     <div class="members_table">
     <table>
         <th>Status </th>
-        <th>No. Members</th>
+        <th>Standard</th>
+        <th>Premium</th>
+        <th>Total</th>
         <tr>
             <td>Active</td>
+            <td class="center_headings">{{no_active_standard_members}}</td>
+            <td class="center_headings">{{no_active_premium_members}}</td>
             <td class="center_headings">{{no_active_members}}</td>
         </tr>
         <tr>
             <td>Inactive</td>
+            <td class="center_headings">{{no_inactive_standard_members}}</td>
+            <td class="center_headings">{{no_inactive_premium_members}}</td>
             <td class="center_headings">{{no_inactive_members}}</td>
         </tr>
         <tr>
             <td><b>Total</b></td>
+            <td class="center_headings">{{no_standard_members}}</td>
+            <td class="center_headings">{{no_premium_members}}</td>
             <td class="center_headings"><b>{{total_no_members}}</b></td>
         </tr>
     </table>

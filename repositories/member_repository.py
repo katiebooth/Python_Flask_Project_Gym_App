@@ -73,6 +73,67 @@ def inactive_members():
         inactive_members.append(inactive_member)
     return inactive_members
 
+#STANDARD MEMBERS
+def standard_members():
+    standard_members = []
+    sql = "SELECT * FROM members WHERE premium = FALSE"
+    results = run_sql(sql)
+    for row in results:
+        standard_member = Member(row['name'], row['premium'], row ['active'], row['id']).__dict__
+        standard_members.append(standard_member)
+    return standard_members
+
+#PREMIUM MEMBERS
+def premium_members():
+    premium_members = []
+    sql = "SELECT * FROM members WHERE premium = TRUE"
+    results = run_sql(sql)
+    for row in results:
+        premium_member = Member(row['name'], row['premium'], row ['active'], row['id']).__dict__
+        premium_members.append(premium_member)
+    return premium_members
+
+#STANDARD ACTIVE MEMBERS
+def active_standard_members():
+    active_standard_members = []
+    sql = "SELECT * FROM members WHERE premium = FALSE AND active = TRUE"
+    results = run_sql(sql)
+    for row in results:
+        active_standard_member = Member(row['name'], row['premium'], row ['active'], row['id']).__dict__
+        active_standard_members.append(active_standard_member)
+    return active_standard_members
+
+#STANDARD INACTIVE MEMBERS
+def inactive_standard_members():
+    inactive_standard_members = []
+    sql = "SELECT * FROM members WHERE premium = FALSE AND active = FALSE"
+    results = run_sql(sql)
+    for row in results:
+        inactive_standard_member = Member(row['name'], row['premium'], row ['active'], row['id']).__dict__
+        inactive_standard_members.append(inactive_standard_member)
+    return inactive_standard_members
+
+#PREMIUM ACTIVE MEMBERS
+def active_premium_members():
+    active_premium_members = []
+    sql = "SELECT * FROM members WHERE premium = TRUE AND active = TRUE"
+    results = run_sql(sql)
+    for row in results:
+        active_premium_member = Member(row['name'], row['premium'], row ['active'], row['id']).__dict__
+        active_premium_members.append(active_premium_member)
+    return active_premium_members
+
+#PREMIUM INACTIVE MEMBERS
+def inactive_premium_members():
+    inactive_premium_members = []
+    sql = "SELECT * FROM members WHERE premium = TRUE AND active = FALSE"
+    results = run_sql(sql)
+    for row in results:
+        inactive_premium_member = Member(row['name'], row['premium'], row ['active'], row['id']).__dict__
+        inactive_premium_members.append(inactive_premium_member)
+    return inactive_premium_members
+
+
 #CALCULATE REVENUE
 def calculate_total_revenue():
     all_classes = class_repository.select_all()
