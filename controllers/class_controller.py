@@ -1,7 +1,7 @@
 from flask import Blueprint, Flask, redirect, render_template, request
 
 from models.gym_class import GymClass
-from console import *
+# from console import *
 import repositories.class_repository as class_repository
 import repositories.member_repository as member_repository
 

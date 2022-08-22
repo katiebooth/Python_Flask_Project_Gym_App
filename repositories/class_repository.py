@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.gym_class import GymClass
+import datetime
 
 def save(gymclass):
     sql = "INSERT INTO classes (name, date, price, capacity, premium) VALUES (%s, %s, %s, %s, %s) RETURNING id"
@@ -14,7 +15,9 @@ def select_all():
     sql = "SELECT * FROM classes"
     results = run_sql(sql)
     for row in results:
-        gym_class = GymClass(row['name'], row['date'], row['price'], row['capacity'], row['premium'], row['id'])
+        class_date = str(row['date'])
+        date = datetime.date(int(class_date[0:3]), int(class_date[9:10]), int(class_date[6:7]))
+        gym_class = GymClass(row['name'], date, row['price'], row['capacity'], row['premium'], row['id'])
         classes.append(gym_class)
     return classes
 

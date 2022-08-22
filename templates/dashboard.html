@@ -2,7 +2,7 @@
 
 {% extends "base.html" %}
 {% block content %}
-<h1>Dashboard - Bod Squad</h1>
+<h1>Bod Squad Dashboard</h1>
 <div class="dashboard_container">
 
     <div class ="classes_container">
@@ -38,7 +38,7 @@
     </div>
     
     <div class="date">
-        Date : {{gym_class.date}}
+        Date : {{gym_class.date.strftime("%b %d")}}
     </div>  
     
     <div class="price">
