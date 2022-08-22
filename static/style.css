@@ -27,15 +27,34 @@ ul > a:hover {
 
 }
 
+a {
+    color: rgb(31, 4, 4);
+    text-decoration: none;
+    font-size: large;
+    position: relative;
+    padding: 5px;
+    border:2px solid cornflowerblue;
+    background-color: lightcyan;
+    border-radius: 3pt;
+    margin-left: 5px;
+}
+
 h1 {
     font-size: 32pt;
-    color : white
+    color : white;
+    margin-left: 12px
+    
 }
 
 h2 {
     font-size: 16pt;
     color : white;
     margin-left: 100px;
+}
+
+h3 {
+    color: white;
+    size: 14pt
 }
 
 .classes_container {
@@ -55,6 +74,10 @@ h2 {
     text-align: center;
     align-items : center; 
     justify-content : center; 
+}
+
+.class_name {
+    margin-top: 5px;
 }
 
 p > a {

@@ -41,7 +41,7 @@ def edit_class(id):
     gym_class = class_repository.select(id)
     return render_template('classes/edit.html', gym_class=gym_class)
 
-#Update member
+#Update class
 @classes_blueprint.route("/<id>", methods=["POST"])
 def update_class(id):
     class_name = request.form['name']
