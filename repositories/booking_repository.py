@@ -14,7 +14,7 @@ def save(booking):
 
 def select_all():
     bookings = []
-    sql = "SELECT * FROM bookings ORDER BY id"
+    sql = "SELECT * FROM bookings ORDER BY classes_id"
     results = run_sql(sql)
     for result in results:
         member = member_repository.select(result["member_id"])
@@ -36,6 +36,7 @@ def select(id):
         booking = Booking(member, gym_class, result["id"])
     return booking
 
+
 def delete_all():
     sql = "DELETE FROM bookings"
     run_sql(sql)
@@ -44,4 +45,5 @@ def delete_booking(id):
     sql = "DELETE FROM bookings WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
 

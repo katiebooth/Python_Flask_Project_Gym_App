@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 from models.gym_class import GymClass
 import datetime
+import repositories.member_repository as member_repository
 
 def save(gymclass):
     sql = "INSERT INTO classes (name, date, time, price, capacity, premium) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
@@ -17,7 +18,8 @@ def select_all():
     for row in results:
         date = datetime.datetime.fromisoformat(str(row['date']))
         date = datetime.datetime.strftime(date,'%d %b')
-        gym_class = GymClass(row['name'], date, row['time'], row['price'],row['capacity'], row['premium'], row['id'])
+        spaces_remaining = row['capacity'] - len(member_repository.list_all_members_for_class(row['id']))
+        gym_class = GymClass(row['name'], date, row['time'], row['price'], spaces_remaining, row['premium'], row['id'])
         classes.append(gym_class)
     return classes
 

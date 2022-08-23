@@ -29,6 +29,17 @@ def select(id):
         member = Member(result['name'], result['premium'], result ['active'], result['id'])
     return member
 
+
+def search_by_name(name):
+    member_list_by_name = []
+    sql = "SELECT * FROM clients where UPPER(name) like UPPER(%s)"
+    values = ['%'+name+'%']
+    results = run_sql(sql,values)
+    for result in results:
+        member = Member(result['name'],result['id'])
+        member_list_by_name.append(member)
+    return member_list_by_name
+
 def delete_all():
     sql = "DELETE FROM members"
     run_sql(sql)

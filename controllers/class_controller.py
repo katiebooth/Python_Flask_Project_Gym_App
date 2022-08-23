@@ -39,7 +39,8 @@ def all_classes():
 def show_class(id):
     class_to_show = class_repository.select(id)
     members_to_show = member_repository.list_all_members_for_class(id)
-    return render_template("/classes/index.html", gym_class = class_to_show, members_to_show = members_to_show)
+    spaces_remaining = class_to_show.capacity - len(members_to_show)
+    return render_template("/classes/index.html", gym_class = class_to_show, members_to_show = members_to_show, spaces_remaining = spaces_remaining)
 
 #Add new class
 @classes_blueprint.route("/add_class")

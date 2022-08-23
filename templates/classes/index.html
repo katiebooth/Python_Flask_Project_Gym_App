@@ -1,42 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Class Information</h1>
+<h3>{{gym_class.date}} - {{gym_class.time}}
+<span> {% if gym_class.name=="Yoga"%}
+    <img src="static/yoga.jpg"
+    height ="21"
+    width="21">
+    {% elif gym_class.name=="Weightlifting"%}
+    <img src="static/weight.jpg"
+    height ="21"
+    width="21">
+    {% elif gym_class.name=="Run Club"%}
+    <img src="static/running.jpg"
+    height ="21"
+    width="21">
+    {% elif gym_class.name=="Kettlebells"%}
+    <img src="static/kettlebell.jpg"
+    height ="21"
+    width="21">
+    {% elif gym_class.name=="HIIT"%}
+    <img src="static/hiit.jpg"
+    height ="21"
+    width="25">
+    {% endif %}</span>
+    <span><b>{{gym_class.name}}</b></span>
+    <span> - £{{gym_class.price}}</span>
+    </h3>
 
 <table class="individual_class_table">
     <tr>
-        <td>{{gym_class.date}} {{gym_class.time}}</td>
-        <td> 
-                {% if gym_class.name=="Yoga"%}
-                <img src="static/yoga.jpg"
-                height ="21"
-                width="21">
-            {% elif gym_class.name=="Weightlifting"%}
-                <img src="static/weight.jpg"
-                height ="21"
-                width="21">
-            {% elif gym_class.name=="Run Club"%}
-                <img src="static/running.jpg"
-                height ="21"
-                width="21">
-            {% elif gym_class.name=="Kettlebells"%}
-                <img src="static/kettlebell.jpg"
-                height ="21"
-                width="21">
-            {% elif gym_class.name=="HIIT"%}
-                <img src="static/hiit.jpg"
-                height ="21"
-                width="25">
-            {% endif %}
-            <span><b>{{gym_class.name}}</b></span>
-        </td>
-        <td>Capacity : {{gym_class.capacity}}</td>
-        <td>
-            {% if gym_class.premium %}
-            <p> &#11088; Premium &#11088; </p>
-            {% else %}
-            <p> Standard </p>
-            {% endif %}
-        </td>
         <td class="members">
             Members booked onto class:
             <ol>
@@ -47,6 +39,7 @@
             {% endfor %}
             </ol>
         </td>
+        <td>Spaces Remaining : {{spaces_remaining}}</td>
         <td><a href="/{{gym_class.id}}/update">Edit Class Details</a></td>
         <td><a href="/booking">Edit Class Attendees</a></td>
         <td>
