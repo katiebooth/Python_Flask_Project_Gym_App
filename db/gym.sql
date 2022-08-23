@@ -13,7 +13,7 @@ CREATE TABLE classes (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   date DATE,
-  time TIME,
+  time VARCHAR(255),
   price INT,
   capacity INT,
   premium BOOLEAN

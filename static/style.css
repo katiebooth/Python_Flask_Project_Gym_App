@@ -127,7 +127,8 @@ td > a {
     padding: 2px;
     text-decoration: none;
     color: white;
-    background-color:cornflowerblue
+    background-color:cornflowerblue;
+    width: 50px
 }
 
 td > a:hover {
@@ -220,24 +221,36 @@ tr:hover {
     font-size: 16px;
 }
 
+
 .input_form_new .inputbox:hover [type="submit"] {
     background: white;
     color: cornflowerblue;
     border: 1px black;
 }
 
+
 .member {
     text-align: left;
 }
 
 .individual_class_table {
-    width: 800px;
+    width: 900px;
 }
 
 .individual_class_table td {
-    border : none
+    border : none;
 }
 
 .date{
     border-right: 1px solid white;
+}
+
+.deletebox {
+    width: 75px;
+    height: 30px;
+    background: red;
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 12px;
 }

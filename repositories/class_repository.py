@@ -37,6 +37,12 @@ def delete_all():
     sql = "DELETE FROM classes"
     run_sql(sql)
 
+def delete_class(id):
+    sql = "DELETE FROM classes WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+
 #UPDATE
 def update(gym_class):
     sql = "UPDATE classes SET (name, date, time, price, capacity, premium) = (%s, %s, %s, %s, %s, %s. %s)  WHERE id = %s"

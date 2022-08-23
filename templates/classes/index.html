@@ -48,7 +48,11 @@
             {% endfor %}
         </td>
         <td><a href="/{{gym_class.id}}/update">Edit Class</a></td>
-        
+        <td>
+            <form action="/{{gym_class.id}}/delete" method="POST">
+            <input class = "deletebox" type="submit" value="Delete Class"/> 
+            </form>
+        </td>
     </tr>
     </table>
 {% endblock %}

@@ -36,12 +36,13 @@ def make_booking():
     #     if member['name'] == member_to_book.name:
     #         return render_template("already_booked.html")
     #     else:  
-    if member_to_book.premium == False and gym_class.premium == True:
+    if member_to_book.active == False:
+        return render_template("inactive_member.html")
+    elif member_to_book.premium == False and gym_class.premium == True:
         return render_template("premium_class.html")
+    elif len(members_list) >= gym_class.capacity:
+        return render_template("class_full.html")           
     else:
-        if len(members_list) < gym_class.capacity:
-            booking_repository.save(booking) 
-        else:
-            return render_template("class_full.html")   
+         booking_repository.save(booking)
     return redirect("/")
 
