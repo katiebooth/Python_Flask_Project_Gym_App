@@ -16,13 +16,11 @@ def create_booking():
     gym_classes = class_repository.select_all()
     return render_template("/bookings/new.html", members = members, gym_classes = gym_classes)
 
-#once booking form completed, update information for the relevant class
-#take the information of member and gym class ID from the form
-#create a new instance of the booking class
-#book the member onto the class as long as the following are true:
-  #1. Member is not already booked onto class
-  #2. Member has premium membership if class is premium
-  #3. Class is not full
+@booking_blueprint.route("/booking")
+def show_bookings():
+    booking_list = booking_repository.select_all()
+    return render_template("/bookings/index.html", booking_list = booking_list)
+
 
 @booking_blueprint.route("/booking", methods = ['POST'])
 def make_booking():
@@ -32,10 +30,10 @@ def make_booking():
     gym_class = class_repository.select(gym_class_id)
     booking = Booking(member_to_book, gym_class)
     members_list = member_repository.list_all_members_for_class(gym_class.id)
-    # for member in members_list:
-    #     if member['name'] == member_to_book.name:
-    #         return render_template("already_booked.html")
-    #     else:  
+    #book the member onto the class as long as the following are true:
+    #1. Member is not already booked onto class
+    #2. Member has premium membership if class is premium
+    #3. Class is not full
     if member_to_book.active == False:
         return render_template("inactive_member.html")
     elif member_to_book.premium == False and gym_class.premium == True:
@@ -43,6 +41,15 @@ def make_booking():
     elif len(members_list) >= gym_class.capacity:
         return render_template("class_full.html")           
     else:
-         booking_repository.save(booking)
-    return redirect("/")
+        for member in members_list:
+            if member['name'] == member_to_book.name:
+                return render_template("already_booked.html")
+        booking_repository.save(booking)
+    return redirect("/booking")
+
+#Delete booking
+@booking_blueprint.route("/booking/<id>/delete", methods = ['POST'])
+def delete_booking(id):
+    booking_repository.delete_booking(id)
+    return redirect('/booking')
 

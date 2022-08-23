@@ -54,7 +54,7 @@ h2 {
 
 h3 {
     color: white;
-    font-size: 26pt;
+    font-size: 20pt;
     margin-left: 5px
 }
 
@@ -165,7 +165,7 @@ tr:hover {
     background-color: lightcyan;
     border : 5px solid cornflowerblue;
     border-radius: 10px;
-    width: 300px;
+    width: 350px;
 }
 
 .input_form_new h1 {
@@ -234,7 +234,7 @@ tr:hover {
 }
 
 .individual_class_table {
-    width: 900px;
+    width: 1000px;
 }
 
 .individual_class_table td {
@@ -246,7 +246,7 @@ tr:hover {
 }
 
 .deletebox {
-    width: 75px;
+    width: 100px;
     height: 30px;
     background: red;
     color: white;

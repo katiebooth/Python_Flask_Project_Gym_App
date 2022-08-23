@@ -15,7 +15,7 @@
     <label for="gym_class">Select a class:</label>
         <select name="gym_class_id" id="gym_class">
         {% for gym_class in gym_classes %}
-        <option value="{{ gym_class.id }}">{{ gym_class.name }} on {{gym_class.date}}</option>
+        <option value="{{ gym_class.id }}">{{ gym_class.name }} on {{gym_class.date}} at {{gym_class.time}} </option>
         {% endfor %}
         </select>
         <div class="inputbox">

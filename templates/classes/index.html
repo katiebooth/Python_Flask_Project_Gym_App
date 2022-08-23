@@ -39,15 +39,16 @@
         </td>
         <td class="members">
             Members booked onto class:
+            <ol>
             {% for member in members_to_show %}
-            <div class="member">
-                <ol>
-                <span> &#9989;</span>   {{member.name}}
-                </ol>
+            <div class="member">  
+                <li>{{member.name}} </li> 
             </div>
             {% endfor %}
+            </ol>
         </td>
-        <td><a href="/{{gym_class.id}}/update">Edit Class</a></td>
+        <td><a href="/{{gym_class.id}}/update">Edit Class Details</a></td>
+        <td><a href="/booking">Edit Class Attendees</a></td>
         <td>
             <form action="/{{gym_class.id}}/delete" method="POST">
             <input class = "deletebox" type="submit" value="Delete Class"/> 

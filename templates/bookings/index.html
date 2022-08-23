@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Booking Information</h1>
+
+<table>
+    <th>Member Name</th>
+    <th>Class Name</th>
+    <th>Class Date</th>
+    {% for booking in booking_list %}
+    <tr>
+        <td>{{booking.member.name}}</td>
+        <td>{{booking.gym_class.name}}</td>
+        <td>{{booking.gym_class.date}}</td>
+        <td>
+            <form action="/booking/{{booking.id}}/delete" method="POST">
+                <input class="deletebox" type="submit" value="Delete Booking" />
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
