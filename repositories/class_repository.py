@@ -3,8 +3,8 @@ from models.gym_class import GymClass
 import datetime
 
 def save(gymclass):
-    sql = "INSERT INTO classes (name, date, price, capacity, premium) VALUES (%s, %s, %s, %s, %s) RETURNING id"
-    values = [gymclass.name, gymclass.date, gymclass.price, gymclass.capacity, gymclass.premium]
+    sql = "INSERT INTO classes (name, date, time, price, capacity, premium) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
+    values = [gymclass.name, gymclass.date, gymclass.time, gymclass.price, gymclass.capacity, gymclass.premium]
     results = run_sql(sql, values)
     id = results[0]['id']
     gymclass.id = id
@@ -12,12 +12,12 @@ def save(gymclass):
 
 def select_all():
     classes = []
-    sql = "SELECT * FROM classes"
+    sql = "SELECT * FROM classes ORDER BY date"
     results = run_sql(sql)
     for row in results:
-        class_date = str(row['date'])
-        date = datetime.date(int(class_date[0:3]), int(class_date[9:10]), int(class_date[6:7]))
-        gym_class = GymClass(row['name'], date, row['price'], row['capacity'], row['premium'], row['id'])
+        date = datetime.datetime.fromisoformat(str(row['date']))
+        date = datetime.datetime.strftime(date,'%d %b')
+        gym_class = GymClass(row['name'], date, row['time'], row['price'],row['capacity'], row['premium'], row['id'])
         classes.append(gym_class)
     return classes
 
@@ -27,8 +27,10 @@ def select(id):
     values = [id]
     results = run_sql(sql, values)
     if results:
-        result = results[0]
-        gym_class = GymClass(result['name'], result['date'], result['price'], result['capacity'], result['premium'], result['id'])
+        row = results[0]
+        date = datetime.datetime.fromisoformat(str(row['date']))
+        date = datetime.datetime.strftime(date,'%d %b')
+        gym_class = GymClass(row['name'], date, row['time'], row['price'], row['capacity'], row['premium'], row['id'])
     return gym_class
 
 def delete_all():
@@ -37,6 +39,6 @@ def delete_all():
 
 #UPDATE
 def update(gym_class):
-    sql = "UPDATE classes SET (name, date, price, capacity, premium) = (%s, %s, %s, %s, %s)  WHERE id = %s"
-    values = [gym_class.name, gym_class.date, gym_class.price, gym_class.capacity, gym_class.premium, gym_class.id]
+    sql = "UPDATE classes SET (name, date, time, price, capacity, premium) = (%s, %s, %s, %s, %s, %s. %s)  WHERE id = %s"
+    values = [gym_class.name, gym_class.date, gym_class.time, gym_class.price, gym_class.capacity, gym_class.premium, gym_class.id]
     run_sql(sql, values)

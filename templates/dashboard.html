@@ -4,65 +4,52 @@
 {% block content %}
 <h1>Bod Squad Dashboard</h1>
 <div class="dashboard_container">
-
     <div class ="classes_container">
-    <h2>Class Information - All Classes</h2>
-{% for gym_class in classes %}
-<div class="classes">
-    
-    <div class="class_name">
-    <b>{{gym_class.name}}</b>
-    <span>
-        {% if gym_class.name=="Yoga"%}
-        <img src="static/yoga.jpg"
-        height ="21"
-        width="21">
-    {% elif gym_class.name=="Weightlifting"%}
-        <img src="static/weight.jpg"
-        height ="21"
-        width="21">
-    {% elif gym_class.name=="Run Club"%}
-        <img src="static/running.jpg"
-        height ="21"
-        width="21">
-    {% elif gym_class.name=="Kettlebells"%}
-        <img src="static/kettlebell.jpg"
-        height ="21"
-        width="21">
-    {% elif gym_class.name=="HIIT"%}
-        <img src="static/hiit.jpg"
-        height ="21"
-        width="25">
-    {% endif %}
-    </span>
-    </div>
-    
-    <div class="date">
-        Date : {{gym_class.date.strftime("%b %d")}}
-    </div>  
-    
-    <div class="price">
-       Price : £{{gym_class.price}}
-    </div>
-    
-    <div class="capacity">
-        Capacity : {{gym_class.capacity}}
-    </div>
-
-    <div> Premium Class : 
-        {% if gym_class.premium %}
-        <span> &#9989;</span>
-        {% else %}
-        <span>&#10060;</span>
-        {% endif %}
+    <h2>Upcoming Classes</h2>
+    <table class="upcoming_classes_table">
+    {% for gym_class in classes %}
+    <tr>
+        <td class="date">{{gym_class.date}} - {{gym_class.time}}</td>
+        <td> 
+                {% if gym_class.name=="Yoga"%}
+                <img src="static/yoga.jpg"
+                height ="21"
+                width="21">
+            {% elif gym_class.name=="Weightlifting"%}
+                <img src="static/weight.jpg"
+                height ="21"
+                width="21">
+            {% elif gym_class.name=="Run Club"%}
+                <img src="static/running.jpg"
+                height ="21"
+                width="21">
+            {% elif gym_class.name=="Kettlebells"%}
+                <img src="static/kettlebell.jpg"
+                height ="21"
+                width="21">
+            {% elif gym_class.name=="HIIT"%}
+                <img src="static/hiit.jpg"
+                height ="21"
+                width="25">
+            {% endif %}
+            <span><b>{{gym_class.name}}</b></span>
+        </td>
+        <td>Capacity : {{gym_class.capacity}}</td>
+        <td>
+            {% if gym_class.premium %}
+            <p> &#11088; Premium &#11088; </p>
+            {% else %}
+            <p> Standard </p>
+            {% endif %}
+        </td>
+        <td><a href="/{{gym_class.id}}">View / Edit Class</a></td>
+    </tr>
+    {% endfor %}
+    </table>
     </div>
 
-    <p><a href="/{{gym_class.id}}">View / Edit Class</a></p>
-</div>
-{% endfor %}
-</div>
 
-<div class="members_summary_container">
+    <div class="members_summary_container">
     <h2>Member Numbers</h2>
     <div class="members_table">
     <table>
@@ -89,14 +76,14 @@
             <td class="center_headings"><b>{{total_no_members}}</b></td>
         </tr>
     </table>
-    </div>  
-</div>
+    </div>
+    </div>
 
-<div class="financials_summary_container">
-    <h2>Financials</h2>
-    <p class="revenue">£{{total_revenue}}</p>
-    <p>Projected Revenue This Month</p>
-</div>
+    <div class="financials_summary_container">
+        <h2>Financials</h2>
+        <p class="revenue">£{{total_revenue}}</p>
+        <p>Projected Revenue This Month</p>
+    </div>
 
 </div>
 

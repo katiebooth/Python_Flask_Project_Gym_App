@@ -1,41 +1,54 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Class Information</h1>
-<div class="classes_ind">
 
-    <b><div class="class_name">
-    {{gym_class.name}}
-    </div></b>
-    
-    <div class="date">
-        Date : {{gym_class.date}}
-    </div>  
-    
-    <div class="price">
-        Price : £{{gym_class.price}}
-    </div>
-    
-    <div class="capacity">
-        Capacity : {{gym_class.capacity}}
-    </div>
-
-    <div> Premium Class : 
-        {% if gym_class.premium %}
-        <span> &#9989;</span>
-        {% else %}
-        <span>&#10060;</span>
-        {% endif %}
-    </div>
-    <div class="members">
-        <div>Members booked onto class:</div>
-        {% for member in members_to_show %}
-        <div class="member">
-            <ol>
-            <span> &#9989;</span>   {{member.name}}
-            </ol>
-        </div>
-        {% endfor %}
-    </div>
-<p><a href="/{{gym_class.id}}/update">Edit Class</a></p>
-</div>
+<table class="individual_class_table">
+    <tr>
+        <td>{{gym_class.date}} {{gym_class.time}}</td>
+        <td> 
+                {% if gym_class.name=="Yoga"%}
+                <img src="static/yoga.jpg"
+                height ="21"
+                width="21">
+            {% elif gym_class.name=="Weightlifting"%}
+                <img src="static/weight.jpg"
+                height ="21"
+                width="21">
+            {% elif gym_class.name=="Run Club"%}
+                <img src="static/running.jpg"
+                height ="21"
+                width="21">
+            {% elif gym_class.name=="Kettlebells"%}
+                <img src="static/kettlebell.jpg"
+                height ="21"
+                width="21">
+            {% elif gym_class.name=="HIIT"%}
+                <img src="static/hiit.jpg"
+                height ="21"
+                width="25">
+            {% endif %}
+            <span><b>{{gym_class.name}}</b></span>
+        </td>
+        <td>Capacity : {{gym_class.capacity}}</td>
+        <td>
+            {% if gym_class.premium %}
+            <p> &#11088; Premium &#11088; </p>
+            {% else %}
+            <p> Standard </p>
+            {% endif %}
+        </td>
+        <td class="members">
+            Members booked onto class:
+            {% for member in members_to_show %}
+            <div class="member">
+                <ol>
+                <span> &#9989;</span>   {{member.name}}
+                </ol>
+            </div>
+            {% endfor %}
+        </td>
+        <td><a href="/{{gym_class.id}}/update">Edit Class</a></td>
+        
+    </tr>
+    </table>
 {% endblock %}

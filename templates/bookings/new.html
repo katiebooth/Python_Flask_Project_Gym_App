@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="input_form_new">
-<h1>Create a booking</h1>
+<h1>Make a booking</h1>
     <form action="/booking" method="post">
     <div class="inputbox">    
     <label for="member">Select a member:</label>
@@ -15,7 +15,7 @@
     <label for="gym_class">Select a class:</label>
         <select name="gym_class_id" id="gym_class">
         {% for gym_class in gym_classes %}
-        <option value="{{ gym_class.id }}">{{ gym_class.name }} on {{gym_class.date }}</option>
+        <option value="{{ gym_class.id }}">{{ gym_class.name }} on {{gym_class.date}}</option>
         {% endfor %}
         </select>
         <div class="inputbox">

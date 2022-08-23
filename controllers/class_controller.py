@@ -51,10 +51,11 @@ def add_class():
 def new_class():
     class_name = request.form['name']
     class_date = request.form['date']
+    class_time = request.form['time']
     price = request.form['price']
     capacity = request.form['capacity']
     premium_status = True if 'premium' in request.form else False
-    new_class = GymClass(class_name, class_date, price, capacity, premium_status)
+    new_class = GymClass(class_name, class_date, class_time, price, capacity, premium_status)
     class_repository.save(new_class)
     return redirect("/")
 
@@ -68,9 +69,10 @@ def edit_class(id):
 def update_class(id):
     class_name = request.form['name']
     class_date = request.form['date']
+    class_time =request.form['time']
     price = request.form['price']
     capacity = request.form['capacity']
     premium_status = True if 'premium' in request.form else False
-    new_class = GymClass(class_name, class_date, price, capacity, premium_status, id)
+    new_class = GymClass(class_name, class_date, class_time, price, capacity, premium_status, id)
     class_repository.update(new_class)
     return redirect("/")
