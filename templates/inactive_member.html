@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Member is inactive - reactivate membership to book!</h3>
-<a href="/booking/new">Make Another Booking</a>
+<div class = "cannot_book_container">
+    <p>Member is inactive - reactivate membership to book!</p>
+    <div><a href="/booking/new">Make Another Booking</a></div>
+</div>
 {% endblock%}
+

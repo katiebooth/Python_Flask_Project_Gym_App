@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Class is full!</h3>
-<a href="/booking/new">Make Another Booking</a>
+<div class = "cannot_book_container">
+    <p>Class is full!</p>
+    <div><a href="/booking/new">Make Another Booking</a></div>
+</div>
 {% endblock%}
 
 

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Member is already booked on to class!</h3>
-<a href="/booking/new">Make Another Booking</a>
+<div class = "cannot_book_container">
+    <p>Member is already booked on to class!</p>
+    <div><a href="/booking/new">Make Another Booking</a></div>
+</div>
 {% endblock%}

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>This is a premium class but member does not have premium membership!</h3>
-<a href="/booking/new">Make Another Booking</a>
+<div class = "cannot_book_container">
+    <p>This is a premium class but member does not have premium membership!</p>
+    <div><a href="/booking/new">Make Another Booking</a></div>
+</div>
 {% endblock%}

@@ -254,3 +254,35 @@ tr:hover {
     border-radius: 10px;
     font-size: 12px;
 }
+
+.cannot_book_container {
+    width: 500px;
+    height: 140px;
+    margin-top: 100px;
+    margin-left: 150px;
+    border: 5px solid black;
+    background: cornflowerblue;
+    font-size: 18pt;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    
+}
+
+.cannot_book_container > div > a {
+    color: rgb(31, 4, 4);
+    text-decoration: none;
+    font-size: large;
+    position: relative;
+    padding: 5px;
+    border:2px solid black;
+    background-color: lightcyan;
+    border-radius: 3pt;
+    margin-left: 5px;
+}
+
+        
+.cannot_book_container > div > a:hover {
+    color:white;
+    background-color: cornflowerblue
+}
