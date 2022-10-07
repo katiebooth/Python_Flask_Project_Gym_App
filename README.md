@@ -42,7 +42,7 @@ View members page:
  - createdb gym_app
  - psql -d <gym_app> -f <gym_app>
 2. Extract the required data from the database using SQL. Run the following in the terminal:
- - run_sql.py
+ - python3 console.py
 3. Load the webpage. Run the following in the terminal:
  - flask run
 4. Open the webpage provided in the return from step 3.
